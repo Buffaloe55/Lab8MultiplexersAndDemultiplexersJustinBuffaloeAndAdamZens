@@ -1,0 +1,17 @@
+module mux(
+    input [3:0] A, B, C, D,
+    input [1:0] Sel,
+    input Enable,
+    output [3:0] Y
+);
+
+wire [3:0] selected_data;
+
+assign selected_data = (Sel == 2'b00) ? A :
+                           (Sel == 2'b01) ? B :
+                           (Sel == 2'b10) ? C : D;
+
+assign Y = Enable ? selected_data : 4'b0000;
+
+
+endmodule
